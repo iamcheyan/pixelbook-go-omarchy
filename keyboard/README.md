@@ -25,6 +25,6 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 
 参考：<https://support.google.com/pixelbook/answer/7504061>
 
-另外，本机按用户要求将 A 左侧的 Search/Launcher 键设置为：单独按下通过 F24 触发 `voxtype record toggle`；当前先保持已验证的直接 F24 路径，组合 Ctrl 行为待单键语音恢复后再单独处理。左下区域保持 `Ctrl → Assistant → Alt`。
+另外，本机当前将 A 左侧的 Search/Launcher 键直接设置为普通 Caps Lock；语音 F24 绑定已移除，避免在当前 Atlas 会话中出现无响应或重复 toggle。左下区域保持 `Ctrl → Assistant → Alt`。
 
 Assistant 的底层扫描码方案参考 Fedora 项目的 Chromebook hwdb，以及 Atlas 专用资料：`d8 → leftmeta`、`db → capslock`。这类键在 hwdb 之前不会出现在普通 XKB/keyd 监听中。
