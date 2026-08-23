@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+failed=0
+
+if ! git diff --cached --check; then
+  printf '%s\n' '安全检查失败：暂存区存在空白错误。' >&2
+  failed=1
+fi
+
+while IFS= read -r -d '' path; do
+  size=$(git cat-file -s ":$path" 2>/dev/null || printf '0')
+  if (( size > 10485760 )); then
+    printf '安全检查失败：文件过大（>10 MiB）：%s\n' "$path" >&2
+    failed=1
+  fi
+
+  case "$path" in
+    *.png|*.jpg|*.jpeg|*.gif|*.webp|*.zip|*.gz|*.xz|*.zst|*.bin|*.img|*.iso|*.pdf)
+      continue
+      ;;
+  esac
+
+  content=$(git show ":$path" 2>/dev/null || true)
+  if printf '%s' "$content" | rg -n -i \
+      'BEGIN (RSA|OPENSSH|EC|DSA|PGP) PRIVATE KEY|\bgh[pousr]_[A-Za-z0-9_]{20,}\b|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{30,}|aws_secret_access_key[[:space:]]*[:=]|password[[:space:]]*[:=][[:space:]]*[^[:space:]]{8,}'; then
+    printf '安全检查失败：疑似密钥/令牌/硬编码密码：%s\n' "$path" >&2
+    failed=1
+  fi
+done < <(git diff --cached --name-only -z --diff-filter=ACMR)
+
+if (( failed )); then
+  printf '%s\n' '提交已阻止。请移除敏感内容后重新 git add；确认是误报时再修改 hook。' >&2
+  exit 1
+fi

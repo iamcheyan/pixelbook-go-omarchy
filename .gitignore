@@ -1,2 +1,38 @@
 /audio/atlas-ucm2/
 /audio/ucm2/
+
+# Secrets and local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.kdbx
+credentials*
+secrets/
+
+# Local/editor/OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated/runtime data
+*.log
+*.core
+*.dump
+coverage/
+dist/
+build/
+.cache/
+
+# ChromeOS recovery images and extracted firmware
+*.bin.zip
+*.img
+*.iso
+recovery/
+firmware-dump/

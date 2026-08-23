@@ -33,3 +33,12 @@ Fedora 参考项目已移到仓库外，避免把上游代码混入本项目：
 
 本项目只记录和维护当前 Atlas/Omarchy 的用户级配置，不执行 Fedora Ansible playbook，不刷写固件，也不覆盖 `/usr/share/omarchy/` 或发行版 ALSA 文件。
 
+## 公开仓库安全
+
+仓库包含提交前安全 hook，会检查私钥、GitHub/AWS 令牌、硬编码密码、空白错误和超大文件。首次克隆后运行：
+
+```bash
+./scripts/install-security-hook.sh
+```
+
+`.gitignore` 已排除环境变量文件、凭据、恢复镜像、固件 dump、日志和生成的 UCM 覆盖目录。公开提交前仍应人工检查 `git diff --cached`。
