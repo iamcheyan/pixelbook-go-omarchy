@@ -9,7 +9,9 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 ## 已安装位置
 
 - 仓库模板：`keyboard/pixelbook-atlas.conf`
+- 仓库 hwdb：`keyboard/61-atlas-keyboard.hwdb`
 - 本机配置：`/etc/keyd/pixelbook-atlas.conf`
+- 本机 hwdb：`/etc/udev/hwdb.d/61-atlas-keyboard.hwdb`
 - Hyprland 用户绑定：`~/.config/hypr/bindings.lua`
 
 重新安装模板：
@@ -18,8 +20,10 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 ./scripts/install-pixelbook-keyboard.sh
 ```
 
-安装后可用 `keyd check` 检查语法，`keyd monitor` 观察按键事件；不会修改电源键映射。
+安装后可用 `keyd check` 检查语法，`keyd monitor` 观察按键事件；hwdb 负责 Assistant/Search 这种普通 keyd 看不到的扫描码。不会修改电源键映射。
 
 参考：<https://support.google.com/pixelbook/answer/7504061>
 
 另外，本机按用户要求将 Tab 下方的 Search/Launcher 键恢复为 Caps Lock；左下区域保持 `Ctrl → Assistant → Alt`，其中 Assistant 键作为 Win/Super，Ctrl 和 Alt 不重映射。
+
+Assistant 的底层扫描码方案参考 Fedora 项目的 Chromebook hwdb，以及 Atlas 专用资料：`d8 → leftmeta`、`db → capslock`。这类键在 hwdb 之前不会出现在普通 XKB/keyd 监听中。

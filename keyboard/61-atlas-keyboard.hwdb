@@ -1,0 +1,7 @@
+# Google Pixelbook Go (Atlas) low-level Chromebook key mapping.
+# The Assistant key is an extra atkbd scan code and is not visible to XKB or
+# keyd until udev hwdb translates it.
+
+evdev:atkbd:dmi:bvn*:bvr*:bd*:svnGoogle:pnAtlas:pvr*
+ KEYBOARD_KEY_d8=leftmeta
+ KEYBOARD_KEY_db=capslock
