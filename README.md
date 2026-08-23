@@ -20,6 +20,8 @@ Google Pixelbook Go（Atlas）运行 Omarchy/Arch Linux 的硬件驱动与本机
 - [驱动测试报告](DRIVER_TEST_REPORT.md)：硬件、驱动绑定、功能测试和异常日志。
 - [Fedora 方案兼容性分析](PIXELBOOK_FEDORA_COMPATIBILITY.md)：哪些内容可移植到 Atlas/Omarchy，哪些 Fedora/X11 方案不应直接使用。
 - [音频 UCM 修复说明](audio/README.md)：修复原理、验证和回滚方法。
+- [Pixelbook Go 顶排按键映射](keyboard/pixelbook-atlas.conf)：将 F1-F10 恢复为 Chromebook 动作键。
+- [键盘映射说明](keyboard/README.md)：官方顺序、安装和验证方法。
 
 ## 参考项目
 
