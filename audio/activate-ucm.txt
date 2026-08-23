@@ -1,0 +1,4 @@
+open hw:0
+set _verb HiFi
+set _enadev Speaker
+q
