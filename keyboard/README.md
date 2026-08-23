@@ -24,6 +24,6 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 
 参考：<https://support.google.com/pixelbook/answer/7504061>
 
-另外，本机按用户要求将 Tab 下方的 Search/Launcher 键恢复为 Caps Lock；左下区域保持 `Ctrl → Assistant → Alt`，其中 Assistant 键作为 Win/Super，Ctrl 和 Alt 不重映射。
+另外，本机按用户要求将 A 左侧的 Search/Launcher 键设置为：单独按下通过 F24 触发 `voxtype record toggle`，与其他键一起按下时作为 Ctrl；左下区域保持 `Ctrl → Assistant → Alt`，其中 Assistant 键作为 Win/Super，Ctrl 和 Alt 不重映射。
 
 Assistant 的底层扫描码方案参考 Fedora 项目的 Chromebook hwdb，以及 Atlas 专用资料：`d8 → leftmeta`、`db → capslock`。这类键在 hwdb 之前不会出现在普通 XKB/keyd 监听中。
