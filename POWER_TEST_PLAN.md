@@ -34,7 +34,7 @@
 - 电池和外接电源均适用；
 - 电源键行为未修改。
 
-配置模板：`systemd/logind/60-pixelbook-lid.conf`、`systemd/sleep/60-pixelbook-hibernate.conf`。安装或回滚使用 `scripts/install-power-policy.sh` 配合删除对应 drop-in 文件。
+配置模板：`power/systemd/logind/60-pixelbook-lid.conf`、`power/systemd/sleep/60-pixelbook-hibernate.conf`。安装或回滚使用 `power/install-power-policy.sh` 和 `power/uninstall-power-policy.sh`；`scripts/install-power-policy.sh` 仍保留为兼容入口。
 
 ## 还需要实际测试的项目
 

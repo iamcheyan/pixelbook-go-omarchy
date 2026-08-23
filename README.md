@@ -25,6 +25,7 @@ Google Pixelbook Go（Atlas）运行 Omarchy/Arch Linux 的硬件驱动与本机
 - [Pixelbook Go 顶排按键映射](keyboard/pixelbook-atlas.conf)：将 F1-F10 恢复为 Chromebook 动作键。
 - [键盘映射说明](keyboard/README.md)：官方顺序、安装和验证方法。
 - [电源与睡眠测试计划](POWER_TEST_PLAN.md)：只读基线、未执行的高风险测试和建议顺序。
+- [睡眠与休眠配置包](power/README.md)：可移植的 systemd 策略、安装脚本和 Omarchy 参考实现。
 - [当前状态总览](CURRENT_STATUS.md)：已验证驱动、音频、键盘和电源策略。
 
 ## 参考项目

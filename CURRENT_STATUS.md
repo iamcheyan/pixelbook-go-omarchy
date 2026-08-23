@@ -12,7 +12,7 @@
 - 左下区域保持 `Ctrl → Assistant → Alt`；实体 Ctrl 和 Alt 没有重映射。
 - 电源键没有加入 keyd/hwdb 映射；普通睡眠、合盖和拔电测试仍未手动执行。
 - Hibernate 已实测成功：进入 ACPI S4、写入约 3.8 GiB 镜像并恢复，耗时约 44 秒。
-- 已配置合盖 `suspend-then-hibernate`：先睡眠，持续 24 小时后自动 Hibernate；配置模板见 `systemd/`。
+- 已配置合盖 `suspend-then-hibernate`：先睡眠，持续 24 小时后自动 Hibernate；可移植配置包见 `power/`。
 
 ## 本机配置位置
 
