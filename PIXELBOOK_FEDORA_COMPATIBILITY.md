@@ -1,6 +1,6 @@
 # `pixelbook-fedora` 与当前 Omarchy/Atlas 的兼容性分析
 
-仓库：`pixelbook-fedora/`  
+仓库：`/home/tetsuya/development/pixelbook-fedora-reference/`（仓库外参考副本）
 来源：<https://github.com/jasonmontleon/pixelbook-fedora>  
 当前提交：`23ef6ff`（2026-03-24）  
 分析对象：Google Pixelbook Go，DMI `Google Atlas`，Omarchy 4.0.0，内核 `7.1.8-arch1-3`。

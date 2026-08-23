@@ -12,7 +12,7 @@
 需要处理的异常有两项：
 
 1. `i915` 显卡驱动虽然能驱动内屏和 Hyprland，但内核日志反复出现 `drm_WARN_ON(intel_cdclk_clock_changed(...))`，本次启动统计 484 次，属于“部分有效/存在稳定性风险”。
-2. `snd_soc_avs` 请求 `intel/avs/hda-8086280b-tplg.bin` 失败（错误 -2）。I2S 扬声器、耳机、DMIC 和 HDMI 仍然枚举成功，但 HDA/AVS 音频拓扑不完整，音频驱动应标为“部分有效”。
+2. `snd_soc_avs` 请求 `intel/avs/hda-8086280b-tplg.bin` 失败（错误 -2）。I2S 扬声器、耳机、DMIC 和 HDMI 仍然枚举成功；UCM 修复后内置扬声器播放链路可打开，但 HDA/AVS 拓扑警告仍需后续跟进。
 
 ## 驱动与功能判定
 
@@ -21,7 +21,7 @@
 | Intel UHD Graphics 615 / 内屏 | `i915` | PCI 设备绑定 `i915`；`/sys/class/drm/card1-eDP-1` 为 `connected`；Hyprland 报告 eDP-1 `1920x1080@60.03Hz` | 部分有效：能显示，但有大量 i915 电源/时钟警告 |
 | Wi‑Fi | `iwlwifi` / `iwlmvm` | `wlp1s0` 为 `up`，已连接 SSID `C40FA623BF09-5G`，5 GHz / 160 MHz，发射功率 22 dBm | 有效 |
 | 蓝牙 | `btusb` / `btintel` / `btmtk` | `rfkill` 未软/硬屏蔽；`bluetoothctl show` 显示控制器已 `Powered: yes`、`PowerState: on`、可配对 | 有效（未做外部设备配对吞吐测试） |
-| 内置扬声器/耳机/麦克风/HDMI 音频 | `snd_soc_avs` 及 `snd_soc_*` | `/proc/asound/cards` 有 MAX98373、DA7219、HDMI、DMIC、PROBE；`arecord -l`/`aplay -l` 均列出设备；PipeWire、WirePlumber active | 部分有效：设备可用，但缺少 AVS HDA topology 固件 |
+| 内置扬声器/耳机/麦克风/HDMI 音频 | `snd_soc_avs` 及 `snd_soc_*` | `/proc/asound/cards` 有 MAX98373、DA7219、HDMI、DMIC、PROBE；UCM 修复后默认输出为 `HiFi__Speaker__sink`，`speaker-test` 可打开播放流 | 修复后有效（仍有 AVS HDA topology 警告） |
 | 内置摄像头 | `ipu3_cio2` + `ipu3_imgu` | `/dev/video0`–`/dev/video13`、`/dev/media0`/`media1` 存在；`v4l2-ctl` 报告 `Video Capture Multiplanar`，`/dev/video10` 显示 `camera: ok` | 有效（已验证 V4L2 节点；未拍摄样张） |
 | 键盘 | `atkbd`/标准输入栈 | `/dev/input/event2`，名称 `AT Translated Set 2 keyboard` | 有效 |
 | 触摸板 | `i2c_hid` / `i2c_hid_acpi` | `ACPI0C50:01 04F3:30C5 Touchpad`，`event5`，mouse 节点存在 | 有效 |
@@ -61,6 +61,10 @@
 - 重启用户态音频服务并将 `alsa_output.platform-avs_max98373.18.auto.HiFi__Speaker__sink` 设为默认输出。
 
 修复后观察到 UCM 专用扬声器节点出现，`Left/Right Spk`、`DHT`、`BDE`、`VI Sense` 均为 `on`，播放测试流可以成功打开。详细说明和回滚方法见 [audio/README.md](audio/README.md)。
+
+### 修复后当前状态
+
+UCM 覆盖加载后，默认输出为 `alsa_output.platform-avs_max98373.18.auto.HiFi__Speaker__sink`，`PlaybackPCM` 为 `_ucm0001.hw:MAX98373,0`，功放相关开关均为 `on`。这次修复不安装未知固件、不修改 `/usr/share/alsa`；已将当前状态判定更新为“播放链路有效，拓扑警告待跟进”。
 
 ## 建议的后续验证
 

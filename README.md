@@ -15,6 +15,8 @@ Google Pixelbook Go（Atlas）运行 Omarchy/Arch Linux 的硬件驱动与本机
 
 详细说明见 [audio/README.md](audio/README.md)。
 
+当前完整状态见 [CURRENT_STATUS.md](CURRENT_STATUS.md)。
+
 ## 文档
 
 - [驱动测试报告](DRIVER_TEST_REPORT.md)：硬件、驱动绑定、功能测试和异常日志。
@@ -22,12 +24,13 @@ Google Pixelbook Go（Atlas）运行 Omarchy/Arch Linux 的硬件驱动与本机
 - [音频 UCM 修复说明](audio/README.md)：修复原理、验证和回滚方法。
 - [Pixelbook Go 顶排按键映射](keyboard/pixelbook-atlas.conf)：将 F1-F10 恢复为 Chromebook 动作键。
 - [键盘映射说明](keyboard/README.md)：官方顺序、安装和验证方法。
+- [电源与睡眠测试计划](POWER_TEST_PLAN.md)：只读基线、未执行的高风险测试和建议顺序。
 
 ## 参考项目
 
 Fedora 参考项目已移到仓库外，避免把上游代码混入本项目：
 
-`../pixelbook-fedora-reference`
+`/home/tetsuya/development/pixelbook-fedora-reference`
 
 来源：<https://github.com/jasonmontleon/pixelbook-fedora>
 

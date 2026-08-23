@@ -10,10 +10,10 @@
 
 ## 已启用的用户设置
 
-`~/.config/environment.d/20-atlas-audio.conf` 设置：
+`~/.config/environment.d/20-atlas-audio.conf` 设置（路径中的工作区目录按实际 clone 位置调整）：
 
 ```text
-ALSA_CONFIG_UCM2=/home/tetsuya/development/pixelbook-go-omarchy/audio/atlas-ucm2
+ALSA_CONFIG_UCM2=/path/to/pixelbook-go-omarchy/audio/atlas-ucm2
 ```
 
 在新克隆的工作区先运行：

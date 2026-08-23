@@ -4,7 +4,7 @@ Pixelbook Go（Atlas）的 ChromeOS 顶排动作键顺序为：
 
 `上一页 → 刷新 → 全屏 → Overview → 亮度− → 亮度＋ → 播放/暂停 → 静音 → 音量− → 音量＋`
 
-Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立电源键。本机 Linux 内核将 AT 键盘原始顶排暴露为 F1–F10，因此使用 keyd 将浏览器、亮度和媒体动作恢复为 Linux 输入事件。F3（全屏）和 F4（Omarchy Overview）由 Hyprland 绑定处理。
+Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立电源键。本机 Linux 内核将 AT 键盘原始顶排暴露为 F1–F10，因此使用 keyd 将浏览器、亮度和媒体动作恢复为 Linux 输入事件。按用户习惯，F3 由 Hyprland 绑定为截图，F4 绑定为 Omarchy 主菜单。
 
 ## 已安装位置
 
