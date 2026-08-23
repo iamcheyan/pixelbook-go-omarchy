@@ -8,10 +8,11 @@
 - Atlas 音频 UCM 覆盖已启用：内置扬声器使用 `HiFi__Speaker__sink`，PCM 修正为 `hw:0,0`，PipeWire 播放测试可以打开。
 - Pixelbook Go 顶排 F1–F10 已恢复为 Chromebook 动作键；按用户习惯，F3 是 Omarchy 截图，F4 是 Omarchy 主菜单。
 - Assistant 键通过 Atlas hwdb `d8 → leftmeta` 映射为 Win/Super。
-- A 左侧 Search 键通过 hwdb `db → capslock`，再由 keyd 的 `overload(control, f24)` 实现：单独按是 `voxtype record toggle`，组合按是 Ctrl。
+- A 左侧 Search 键通过 hwdb `db → capslock`，并由 keyd 保持为普通 Caps Lock；当前不绑定语音 F24。
 - 左下区域保持 `Ctrl → Assistant → Alt`；实体 Ctrl 和 Alt 没有重映射。
-- 电源键没有加入 keyd/hwdb 映射，也没有执行睡眠、合盖、拔电、重启或关机测试。
+- 电源键没有加入 keyd/hwdb 映射；普通睡眠、合盖和拔电测试仍未手动执行。
 - Hibernate 已实测成功：进入 ACPI S4、写入约 3.8 GiB 镜像并恢复，耗时约 44 秒。
+- 已配置合盖 `suspend-then-hibernate`：先睡眠，持续 24 小时后自动 Hibernate；配置模板见 `systemd/`。
 
 ## 本机配置位置
 
@@ -33,6 +34,7 @@
 ./scripts/install-security-hook.sh
 ./audio/setup-atlas-ucm.sh
 ./scripts/install-pixelbook-keyboard.sh
+./scripts/install-power-policy.sh
 ```
 
 安装键盘配置需要 root 授权；脚本不会修改电源键映射。

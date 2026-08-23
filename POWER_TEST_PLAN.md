@@ -25,6 +25,17 @@
 
 结论：**Atlas 的 Hibernate/S4 路径可用，并能成功恢复。** 本次没有修改 resume、swap 或电源配置。
 
+## 已配置的合盖策略
+
+已使用 systemd drop-in 配置 `suspend-then-hibernate`：
+
+- 合盖后先进入 suspend；
+- 持续 24 小时后自动进入 Hibernate/ACPI S4；
+- 电池和外接电源均适用；
+- 电源键行为未修改。
+
+配置模板：`systemd/logind/60-pixelbook-lid.conf`、`systemd/sleep/60-pixelbook-hibernate.conf`。安装或回滚使用 `scripts/install-power-policy.sh` 配合删除对应 drop-in 文件。
+
 ## 还需要实际测试的项目
 
 | 项目 | 测试动作 | 风险/前提 |
