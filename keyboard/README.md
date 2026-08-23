@@ -22,4 +22,4 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 
 参考：<https://support.google.com/pixelbook/answer/7504061>
 
-另外，本机按用户要求将 Tab 下方的 Search/Launcher 键恢复为 Caps Lock，并将左 Alt 左侧的左 Ctrl 改为 Win/Super。
+另外，本机按用户要求将 Tab 下方的 Search/Launcher 键恢复为 Caps Lock；左下区域保持 `Ctrl → Assistant → Alt`，其中 Assistant 键作为 Win/Super，Ctrl 和 Alt 不重映射。
