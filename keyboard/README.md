@@ -10,6 +10,7 @@ Google 官方将它们标为 F1–F10 的对应动作键；最右侧另有独立
 
 - 仓库模板：`keyboard/pixelbook-atlas.conf`
 - 仓库 hwdb：`keyboard/61-atlas-keyboard.hwdb`
+- Hyprland 片段：`keyboard/hyprland-bindings.lua`
 - 本机配置：`/etc/keyd/pixelbook-atlas.conf`
 - 本机 hwdb：`/etc/udev/hwdb.d/61-atlas-keyboard.hwdb`
 - Hyprland 用户绑定：`~/.config/hypr/bindings.lua`
