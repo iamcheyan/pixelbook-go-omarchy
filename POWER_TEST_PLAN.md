@@ -12,6 +12,19 @@
 - 当前温度基线约为：CPU 封装 60°C、PCH 50.5°C、Wi‑Fi 55°C、电池 38.9°C。
 - lid/ACPI 电源接口存在；没有读取到异常的 systemd unit。
 
+## Hibernate 实测结果（2026-08-23 14:25，已完成）
+
+本次执行 `systemctl hibernate`，系统实际完成了完整的休眠路径：
+
+- `systemd-hibernate.service` 正常启动和结束；
+- 内核记录 `PM: hibernation: hibernation entry`；
+- 分配约 3.8 GiB snapshot，进入 ACPI `S4`；
+- 随后记录 `Waking up from system sleep state S4` 和 `hibernation exit`；
+- 休眠恢复耗时约 44 秒，当前会话恢复正常；
+- 未观察到本次 hibernate 相关 failed unit。
+
+结论：**Atlas 的 Hibernate/S4 路径可用，并能成功恢复。** 本次没有修改 resume、swap 或电源配置。
+
 ## 还需要实际测试的项目
 
 | 项目 | 测试动作 | 风险/前提 |

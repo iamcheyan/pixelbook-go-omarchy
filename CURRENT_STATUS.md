@@ -11,6 +11,7 @@
 - A 左侧 Search 键通过 hwdb `db → capslock`，再由 keyd 的 `overload(control, f24)` 实现：单独按是 `voxtype record toggle`，组合按是 Ctrl。
 - 左下区域保持 `Ctrl → Assistant → Alt`；实体 Ctrl 和 Alt 没有重映射。
 - 电源键没有加入 keyd/hwdb 映射，也没有执行睡眠、合盖、拔电、重启或关机测试。
+- Hibernate 已实测成功：进入 ACPI S4、写入约 3.8 GiB 镜像并恢复，耗时约 44 秒。
 
 ## 本机配置位置
 
@@ -24,7 +25,7 @@
 
 - `i915` 日志仍有 `intel_cdclk_clock_changed` 警告，但当前内屏和 Hyprland 正常。
 - `snd_soc_avs` 仍报告缺少 HDA topology 文件；I2S/扬声器、耳机、DMIC 和 HDMI 链路已经可以枚举，UCM 修复后播放链路可打开。
-- 睡眠/唤醒、深度睡眠、合盖、电源拔插、蓝牙配对和 USB‑C 热插拔尚未做实际状态变化测试，详见 [POWER_TEST_PLAN.md](POWER_TEST_PLAN.md)。
+- 普通睡眠/唤醒、深度睡眠、合盖、电源拔插、蓝牙配对和 USB‑C 热插拔尚未做实际状态变化测试；Hibernate 已完成，详见 [POWER_TEST_PLAN.md](POWER_TEST_PLAN.md)。
 
 ## 重新安装
 
