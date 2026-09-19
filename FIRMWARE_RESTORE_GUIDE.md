@@ -53,6 +53,34 @@ Restore Stock Firmware
 1. `Restore from USB backup`：选择以前保存的本机固件备份（优先）；或
 2. `Restore from ChromeOS Recovery USB`：从匹配 `ATLAS` 的 Recovery USB 提取原厂固件。
 
+### 没有原始固件备份时
+
+没有以前保存的 ROM 备份也可以恢复，但必须准备匹配 Pixelbook Go/`ATLAS` 的
+ChromeOS Recovery USB。Recovery USB 可以在另一台电脑上使用 Chromebook Recovery
+Utility 制作；不要使用其他型号 Chromebook 的 Recovery 镜像。
+
+在当前 Linux 中运行官方工具的命令是：
+
+```bash
+cd
+curl -LOf https://mrchromebox.tech/firmware-util.sh
+sudo bash firmware-util.sh
+```
+
+菜单操作：
+
+```text
+Restore Stock Firmware
+  → Restore from ChromeOS Recovery USB
+```
+
+工具会从 Recovery USB 中提取适合当前 board 的 ChromeOS 固件，并在写入前处理
+必要的设备标识。确认识别出的 board 是 `ATLAS` 后才继续。恢复成功后使用工具的
+关机选项完全关机，再从同一个 Recovery USB 启动并执行 ChromeOS Recovery。
+
+如果工具没有显示恢复选项、无法识别 USB 或提示设备已经达到 AUE/EOL，先停止，
+不要改用手工 `flashrom` 命令；保留终端输出和工具日志后再确认设备状态。
+
 如果工具提示需要关闭硬件写保护，按照 MrChromebox 针对本机型号的说明操作。不要
 自行短接、拆焊或执行未经确认的 flashrom 参数。固件刷写失败时，**不要重启**，
 先在工具中恢复备份并保存日志。
